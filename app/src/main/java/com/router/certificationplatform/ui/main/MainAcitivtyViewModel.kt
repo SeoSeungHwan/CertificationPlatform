@@ -1,4 +1,4 @@
-package com.router.certificationplatform
+package com.router.certificationplatform.ui.main
 
 import android.content.ContentValues.TAG
 import android.util.Log

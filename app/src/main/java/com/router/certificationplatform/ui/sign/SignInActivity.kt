@@ -14,7 +14,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.router.certificationplatform.GlobalApplication
-import com.router.certificationplatform.MainActivity
+import com.router.certificationplatform.ui.main.MainActivity
 import com.router.certificationplatform.R
 import kotlinx.android.synthetic.main.activity_sign_in.*
 

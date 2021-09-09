@@ -1,4 +1,4 @@
-package com.router.certificationplatform
+package com.router.certificationplatform.ui.main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +11,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.router.certificationplatform.BoardActivity
+import com.router.certificationplatform.GlobalApplication
+import com.router.certificationplatform.R
 import com.router.certificationplatform.ui.sign.SignInActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -36,12 +39,23 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+        //게시판 입장 버튼 클릭 시
+        enter_btn.setOnClickListener {
+            if(certificate_list_spinner.selectedItem != null){
+                val intent = Intent(this@MainActivity, BoardActivity::class.java)
+                intent.putExtra("certificate_name",certificate_list_spinner.selectedItem.toString())
+                startActivity(intent)
+            }else{
+                Toast.makeText(this,"자격증 종목을 입력해주세요.",Toast.LENGTH_SHORT).show()
+            }
+        }
+
     }
 
     override fun onStart() {
         super.onStart()
         certificate_list_spinner.setTitle("종목 목록")
-        main_toolbar.title =GlobalApplication.user.displayName+"님 환영합니다."
+        main_toolbar.title = GlobalApplication.user.displayName+"님 환영합니다."
         setSupportActionBar(main_toolbar)
     }
 
