@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CertificationPlatform"
         android:usesCleartextTraffic="true">
-        <activity android:name=".BoardActivity"></activity>
+        <activity android:name=".ui.board.BoardActivity"></activity>
         <activity
             android:name=".ui.sign.SignInActivity"
             android:exported="true">

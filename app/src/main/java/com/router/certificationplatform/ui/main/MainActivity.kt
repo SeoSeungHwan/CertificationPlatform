@@ -11,7 +11,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.router.certificationplatform.BoardActivity
+import com.router.certificationplatform.ui.board.BoardActivity
 import com.router.certificationplatform.GlobalApplication
 import com.router.certificationplatform.R
 import com.router.certificationplatform.ui.sign.SignInActivity
