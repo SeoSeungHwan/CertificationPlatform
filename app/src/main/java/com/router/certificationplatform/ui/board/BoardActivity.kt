@@ -7,7 +7,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -16,7 +19,10 @@ import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import com.router.certificationplatform.R
 import com.router.certificationplatform.ui.main.MainActivity
+import com.router.certificationplatform.ui.main.MainActivityStarRecyclerViewAdapter
 import kotlinx.android.synthetic.main.activity_board.*
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.star_list_item.view.*
 
 class BoardActivity : AppCompatActivity() {
 
@@ -52,6 +58,27 @@ class BoardActivity : AppCompatActivity() {
                 board_toolbar.menu.findItem(R.id.star_menu).setIcon(R.drawable.ic_baseline_star_24)
             }else{
                 board_toolbar.menu.findItem(R.id.star_menu).setIcon(R.drawable.ic_baseline_star_border_24)
+            }
+        })
+
+
+        //게시판 목록 불러오기
+        val linearLayoutMangerWrapper = LinearLayoutManager(this,
+            RecyclerView.VERTICAL,
+            false
+        )
+        viewModel.fetchBoard(certificate_name)
+        viewModel.boardListLivedata.observe(this,{
+            val adapter = BoardRecyclerViewAdapter(it)
+            board_recyclerview.layoutManager = linearLayoutMangerWrapper
+            board_recyclerview.adapter = adapter
+            adapter.itemClick = object : BoardRecyclerViewAdapter.ItemClick{
+                override fun onClick(view: View, position: Int) {
+                    /*val intent = Intent(this, BoardActivity::class.java)
+                    intent.putExtra("certificate_name",view.certificate_name_tv.text.toString())
+                    startActivity(intent)*/
+                }
+
             }
         })
     }

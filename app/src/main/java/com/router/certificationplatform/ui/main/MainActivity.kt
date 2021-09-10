@@ -10,14 +10,12 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.router.certificationplatform.ui.board.BoardActivity
 import com.router.certificationplatform.GlobalApplication
-import com.router.certificationplatform.MainActivityStarRecyclerViewAdapter
 import com.router.certificationplatform.R
 import com.router.certificationplatform.ui.sign.SignInActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -64,11 +62,12 @@ class MainActivity : AppCompatActivity() {
         main_toolbar.title = GlobalApplication.user.displayName+"님 환영합니다."
         setSupportActionBar(main_toolbar)
 
+
+        //즐겨찾기 목록 가져오기
         val linearLayoutMangerWrapper = LinearLayoutManager(this,
             RecyclerView.VERTICAL,
             false
         )
-        //즐겨찾기 목록 가져오기
         viewModel.fetchStarList()
         viewModel.starListLiveData.observe(this,{
             val adapter = MainActivityStarRecyclerViewAdapter(it)

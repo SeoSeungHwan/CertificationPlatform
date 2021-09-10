@@ -40,7 +40,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@null"
                 android:backgroundTint="@color/main"
                 android:fontFamily="@font/font"
                 android:hint="제목"
@@ -50,11 +49,6 @@
                 android:textColorHint="#616161"
                 android:textSize="17sp"
                 android:textStyle="bold" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/main" />
 
             <EditText
                 android:id="@+id/contents_tv"
