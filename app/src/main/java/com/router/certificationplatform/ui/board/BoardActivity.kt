@@ -61,9 +61,9 @@ class BoardActivity : AppCompatActivity() {
         when(item.itemId){
             //게시물 추가메뉴를 눌렀을 때
             R.id.add_menu -> {
-                /*val intent = Intent(this,BoardWriteActivity::class.java)
+                val intent = Intent(this,BoardWriteActivity::class.java)
                 intent.putExtra("certificate_name",certificate_name)
-                startActivity(intent)*/
+                startActivity(intent)
             }
             //즐겨찾기 클릭시 삭제 및 추가
             R.id.star_menu -> {
