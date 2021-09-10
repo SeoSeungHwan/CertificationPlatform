@@ -13,6 +13,9 @@
         android:theme="@style/Theme.CertificationPlatform"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".BoardInfoActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.board.BoardWriteActivity"
             android:exported="true" />
         <activity android:name=".ui.board.BoardActivity" />
