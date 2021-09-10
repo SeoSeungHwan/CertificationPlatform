@@ -26,9 +26,9 @@ class BoardWriteAcitivtyViewModel : ViewModel() {
         val currentDate = format.format(Date())
         val contents_id = GlobalApplication.user.uid + currentDate
 
-        //게시물 추가 
-        //todo 이메일 앞에 가리기
-        val board = Board(title,contents,currentDate,GlobalApplication.user.email.toString())
+        //게시물 추가
+        var email = "***"+GlobalApplication.user.email.toString().substring(3)
+        val board = Board(title,contents,currentDate,email)
         myRef.child(certificate_name).child(contents_id).setValue(board)
     }
 
