@@ -5,17 +5,23 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.router.certificationplatform.ui.board.BoardActivity
 import com.router.certificationplatform.GlobalApplication
+import com.router.certificationplatform.MainActivityStarRecyclerViewAdapter
 import com.router.certificationplatform.R
 import com.router.certificationplatform.ui.sign.SignInActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.star_list_item.view.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -57,6 +63,34 @@ class MainActivity : AppCompatActivity() {
         certificate_list_spinner.setTitle("종목 목록")
         main_toolbar.title = GlobalApplication.user.displayName+"님 환영합니다."
         setSupportActionBar(main_toolbar)
+
+        val linearLayoutMangerWrapper = LinearLayoutManager(this,
+            RecyclerView.VERTICAL,
+            false
+        )
+        //즐겨찾기 목록 가져오기
+        viewModel.fetchStarList()
+        viewModel.starListLiveData.observe(this,{
+            val adapter = MainActivityStarRecyclerViewAdapter(it)
+            star_recyclerView.layoutManager = linearLayoutMangerWrapper
+            star_recyclerView.adapter = adapter
+            adapter.itemClick = object : MainActivityStarRecyclerViewAdapter.ItemClick{
+                override fun onClick(view: View, position: Int) {
+                    val intent = Intent(this@MainActivity, BoardActivity::class.java)
+                    intent.putExtra("certificate_name",view.certificate_name_tv.text.toString())
+                    startActivity(intent)
+                }
+
+            }
+        })
+        viewModel.starLoadingLiveData.observe(this,{
+            if (it) {
+                star_progressbar.bringToFront()
+                star_progressbar.visibility = View.VISIBLE
+            } else {
+                star_progressbar.visibility = View.GONE
+            }
+        })
     }
 
     //toolbar 세팅

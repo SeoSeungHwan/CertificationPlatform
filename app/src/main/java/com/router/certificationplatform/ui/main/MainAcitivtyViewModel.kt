@@ -5,10 +5,18 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.router.certificateplatform.repository.QnetService
+import com.router.certificationplatform.GlobalApplication
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import org.json.JSONArray
+import java.lang.reflect.Type
 
 
 class MainAcitivtyViewModel : ViewModel() {
@@ -35,6 +43,29 @@ class MainAcitivtyViewModel : ViewModel() {
                 certificateList.add(data.종목명)
             }
             certificateListLiveData.value = certificateList
+        }
+    }
+
+    //즐겨찾기 목록 가져오기
+    val database = Firebase.database
+    val myRef = database.getReference("즐겨찾기")
+    val starList = ArrayList<String>()
+    val starListLiveData = MutableLiveData<ArrayList<String>>()
+
+
+    val starLoadingLiveData = MutableLiveData<Boolean>()
+    fun fetchStarList(){
+        starLoadingLiveData.value = true
+        starList.clear()
+        myRef.child(GlobalApplication.user.uid).get().addOnSuccessListener {
+            //받아온 json 을 starlist arrayList에 삽입
+            it.children.forEach {
+                starList.add(it.key.toString())
+            }
+            starListLiveData.value = starList
+            starLoadingLiveData.value = false
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
         }
     }
 }
