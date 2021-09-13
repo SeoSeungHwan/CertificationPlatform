@@ -37,6 +37,7 @@ class BoardAcitivtyViewModel : ViewModel() {
     val boardList = ArrayList<Board>()
     val boardListLivedata = MutableLiveData<ArrayList<Board>>()
     fun fetchBoard(certificate_name: String){
+        boardList.clear()
         boardRef.child(certificate_name).get().addOnSuccessListener {
             it.children.forEach {
                 var id : String=""

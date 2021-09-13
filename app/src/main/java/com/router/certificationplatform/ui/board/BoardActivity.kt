@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -62,14 +63,14 @@ class BoardActivity : AppCompatActivity() {
         )
         viewModel.fetchBoard(certificate_name)
         viewModel.boardListLivedata.observe(this,{
-            val adapter = BoardRecyclerViewAdapter(it)
+            val adapter = BoardActivityRecyclerViewAdapter(it)
             board_recyclerview.layoutManager = linearLayoutMangerWrapper
             board_recyclerview.adapter = adapter
-            adapter.itemClick = object : BoardRecyclerViewAdapter.ItemClick{
+            adapter.itemClick = object : BoardActivityRecyclerViewAdapter.ItemClick{
                 override fun onClick(view: View, position: Int,board_id:String) {
                     val intent = Intent(this@BoardActivity, BoardInfoActivity::class.java)
-                    Log.d(TAG, "onClick: board_id = ${board_id}")
-                    intent.putExtra("board_id",board_id)
+                    intent.putExtra("certificate_name",certificate_name)
+                    intent.putExtra("board_id",it.get(position).id)
                     startActivity(intent)
                 }
 

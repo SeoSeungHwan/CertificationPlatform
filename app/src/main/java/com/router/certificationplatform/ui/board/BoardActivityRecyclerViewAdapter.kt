@@ -1,17 +1,24 @@
 package com.router.certificationplatform.ui.board
 
+import android.content.ContentValues.TAG
+import android.content.Context
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.router.certificationplatform.R
 import com.router.certificationplatform.model.Board
 
 
-class BoardRecyclerViewAdapter(private val dataSet: ArrayList<Board>) :
-    RecyclerView.Adapter<BoardRecyclerViewAdapter.ViewHolder>() {
+class BoardActivityRecyclerViewAdapter(private val dataSet: ArrayList<Board>) :
+    RecyclerView.Adapter<BoardActivityRecyclerViewAdapter.ViewHolder>() {
 
+    lateinit var context : Context
 
     interface ItemClick{
         fun onClick(view : View ,position: Int,board_id : String)
@@ -35,6 +42,7 @@ class BoardRecyclerViewAdapter(private val dataSet: ArrayList<Board>) :
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.board_list_item, viewGroup, false)
 
+        context = view.context
         return ViewHolder(view)
     }
 
