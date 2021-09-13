@@ -50,7 +50,7 @@ class BoardActivityRecyclerViewAdapter(private val dataSet: ArrayList<Board>) :
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
         viewHolder.board_title_tv.text = dataSet.get(position).title
-        viewHolder.board_writer_tv.text = dataSet.get(position).writer
+        viewHolder.board_writer_tv.text =  "***"+dataSet.get(position).writer.substring(3)
         viewHolder.board_contents_tv.text = dataSet.get(position).contents
         if(itemClick != null){
             viewHolder?.itemView?.setOnClickListener {

@@ -8,6 +8,8 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.router.certificationplatform.GlobalApplication
 import com.router.certificationplatform.model.Board
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class BoardAcitivtyViewModel : ViewModel() {
@@ -40,22 +42,12 @@ class BoardAcitivtyViewModel : ViewModel() {
         boardList.clear()
         boardRef.child(certificate_name).get().addOnSuccessListener {
             it.children.forEach {
-                var id : String=""
-                var title  :String = ""
-                var contents : String =""
-                var writer : String =""
-                var time : String =""
-                it.children.forEach {
-                   when(it.key){
-                       "id" -> id = it.value.toString()
-                       "title" -> title = it.value.toString()
-                       "contents" -> contents = it.value.toString()
-                       "writer" -> writer = it.value.toString()
-                       "time" -> time = it.value.toString()
-                   }
+                val Board = it.getValue(Board::class.java)
+                if (Board != null) {
+                    boardList.add(Board)
                 }
-                boardList.add(Board(id,title,contents,time,writer))
             }
+            boardList.reverse()
             boardListLivedata.value = boardList
         }.addOnFailureListener{
             Log.e("firebase", "Error getting data", it)
