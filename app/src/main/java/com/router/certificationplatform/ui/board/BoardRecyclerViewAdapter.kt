@@ -14,7 +14,7 @@ class BoardRecyclerViewAdapter(private val dataSet: ArrayList<Board>) :
 
 
     interface ItemClick{
-        fun onClick(view : View ,position: Int)
+        fun onClick(view : View ,position: Int,board_id : String)
     }
     var itemClick : ItemClick? = null
 
@@ -46,7 +46,7 @@ class BoardRecyclerViewAdapter(private val dataSet: ArrayList<Board>) :
         viewHolder.board_contents_tv.text = dataSet.get(position).contents
         if(itemClick != null){
             viewHolder?.itemView?.setOnClickListener {
-                itemClick?.onClick(it,position)
+                itemClick?.onClick(it,position,dataSet.get(position).id)
             }
         }
     }

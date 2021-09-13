@@ -13,7 +13,7 @@
         android:theme="@style/Theme.CertificationPlatform"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".BoardInfoActivity"
+            android:name=".ui.board.BoardInfoActivity"
             android:exported="true" />
         <activity
             android:name=".ui.board.BoardWriteActivity"

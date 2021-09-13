@@ -39,19 +39,21 @@ class BoardAcitivtyViewModel : ViewModel() {
     fun fetchBoard(certificate_name: String){
         boardRef.child(certificate_name).get().addOnSuccessListener {
             it.children.forEach {
+                var id : String=""
                 var title  :String = ""
                 var contents : String =""
                 var writer : String =""
                 var time : String =""
                 it.children.forEach {
                    when(it.key){
+                       "id" -> id = it.value.toString()
                        "title" -> title = it.value.toString()
                        "contents" -> contents = it.value.toString()
                        "writer" -> writer = it.value.toString()
                        "time" -> time = it.value.toString()
                    }
                 }
-                boardList.add(Board(title,contents,time,writer))
+                boardList.add(Board(id,title,contents,time,writer))
             }
             boardListLivedata.value = boardList
         }.addOnFailureListener{
