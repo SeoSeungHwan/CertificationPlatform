@@ -4,9 +4,10 @@
 
 
     <item
-        android:id="@+id/board_info_setting_menu"
+        android:id="@+id/board_info_remove_btn"
         android:icon="@drawable/ic_baseline_remove_circle_24"
         android:title="Item"
+        android:visible="false"
         app:showAsAction="always"
         />
 

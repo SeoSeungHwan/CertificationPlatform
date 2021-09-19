@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:background="@drawable/custom_layout">
+    android:layout_margin="10dp">
 
     <TextView
         android:id="@+id/board_title_tv"
@@ -17,6 +16,7 @@
         android:fontFamily="@font/font"
         android:maxLines="1"
         android:text="글 제목"
+        android:textStyle="bold"
         android:textColor="@color/title"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,42 +27,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:ellipsize="end"
         android:fontFamily="@font/font"
         android:maxLines="1"
         android:text="작성자"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/board_title_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/board_contents_tv" />
 
     <TextView
         android:id="@+id/board_contents_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="3dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
         android:ellipsize="end"
         android:fontFamily="@font/font"
         android:maxLines="1"
         android:text="내용"
         android:textColor="@color/black"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/line" />
+        app:layout_constraintTop_toBottomOf="@+id/board_title_tv" />
 
     <View
         android:id="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="10dp"
-        android:background="#BDBDBD"
+        android:background="@color/main"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/board_writer_tv" />

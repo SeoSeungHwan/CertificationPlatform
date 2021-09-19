@@ -31,5 +31,10 @@ class BoardInfoViewModel : ViewModel() {
         }
     }
 
+    fun removeBoardInfo(certificate_name: String, board_id: String){
+        myRef.child(certificate_name).child(board_id).removeValue()
+    }
+
+
 
 }

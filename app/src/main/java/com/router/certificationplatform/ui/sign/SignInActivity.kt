@@ -2,6 +2,7 @@ package com.router.certificationplatform.ui.sign
 
 import android.content.ContentValues
 import android.content.Intent
+import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -65,8 +66,14 @@ class SignInActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
+
+        sign_title_tv.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+
         //todo : user가 이미 있다면 ui변경하기
         val currentUser = auth.currentUser
+        if(currentUser !=null){
+            signIn()
+        }
 
 
     }

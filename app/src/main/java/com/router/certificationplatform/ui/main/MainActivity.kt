@@ -1,6 +1,7 @@
 package com.router.certificationplatform.ui.main
 
 import android.content.Intent
+import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -58,6 +59,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        //타이틀 취소선긋기
+        title_tv.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+
         certificate_list_spinner.setTitle("종목 목록")
         main_toolbar.title = GlobalApplication.user.displayName+"님 환영합니다."
         setSupportActionBar(main_toolbar)

@@ -47,7 +47,7 @@
                 android:minHeight="48dp"
                 android:paddingBottom="10dp"
                 android:textColorHint="#616161"
-                android:textSize="17sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -55,13 +55,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/custom_layout"
                 android:fontFamily="@font/font"
                 android:gravity="top"
                 android:padding="5dp"
                 android:hint="내용을 입력하세요."
+                android:textColor="@color/black"
+                android:background="@android:color/transparent"
                 android:inputType="textMultiLine"
-                android:textSize="15sp" />
+                android:textSize="18sp" />
         </LinearLayout>
     </ScrollView>
 

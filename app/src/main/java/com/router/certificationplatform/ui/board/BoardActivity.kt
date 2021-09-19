@@ -10,6 +10,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.router.certificationplatform.R
@@ -63,17 +64,23 @@ class BoardActivity : AppCompatActivity() {
         )
         viewModel.fetchBoard(certificate_name)
         viewModel.boardListLivedata.observe(this,{
-            val adapter = BoardActivityRecyclerViewAdapter(it)
-            board_recyclerview.layoutManager = linearLayoutMangerWrapper
-            board_recyclerview.adapter = adapter
-            adapter.itemClick = object : BoardActivityRecyclerViewAdapter.ItemClick{
-                override fun onClick(view: View, position: Int,board_id:String) {
-                    val intent = Intent(this@BoardActivity, BoardInfoActivity::class.java)
-                    intent.putExtra("certificate_name",certificate_name)
-                    intent.putExtra("board_id",it.get(position).id)
-                    startActivity(intent)
+            //만약 게시글이 존재하지않는다면
+            if(it.size==0){
+                board_empty_tv.isVisible = true
+            }
+            //게시글이 존재한다면
+            else{
+                val adapter = BoardActivityRecyclerViewAdapter(it)
+                board_recyclerview.layoutManager = linearLayoutMangerWrapper
+                board_recyclerview.adapter = adapter
+                adapter.itemClick = object : BoardActivityRecyclerViewAdapter.ItemClick{
+                    override fun onClick(view: View, position: Int,board_id:String) {
+                        val intent = Intent(this@BoardActivity, BoardInfoActivity::class.java)
+                        intent.putExtra("certificate_name",certificate_name)
+                        intent.putExtra("board_id",it.get(position).id)
+                        startActivity(intent)
+                    }
                 }
-
             }
         })
     }
