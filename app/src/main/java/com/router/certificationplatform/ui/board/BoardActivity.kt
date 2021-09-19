@@ -70,6 +70,7 @@ class BoardActivity : AppCompatActivity() {
             }
             //게시글이 존재한다면
             else{
+                board_empty_tv.isVisible = false
                 val adapter = BoardActivityRecyclerViewAdapter(it)
                 board_recyclerview.layoutManager = linearLayoutMangerWrapper
                 board_recyclerview.adapter = adapter

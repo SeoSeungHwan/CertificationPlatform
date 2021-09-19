@@ -18,6 +18,8 @@ import com.router.certificationplatform.R
 import com.router.certificationplatform.ui.sign.SignInActivity
 import kotlinx.android.synthetic.main.activity_board_info.*
 import kotlinx.android.synthetic.main.star_list_item.view.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class BoardInfoActivity : AppCompatActivity() {
 
@@ -62,6 +64,11 @@ class BoardInfoActivity : AppCompatActivity() {
 
             board_info_title.text = it.title
             board_info_writer.text = "***" + it.writer.substring(3)
+            val nowformat = SimpleDateFormat("yyyyMddhhmmss")
+            val newformat = SimpleDateFormat("M/dd   hh:mm")
+            val formatDate = nowformat.parse(it.time)
+            val newformatDate = newformat.format(formatDate)
+            board_info_time.text = newformatDate
             board_info_contents.text = it.contents
         })
     }
@@ -93,7 +100,7 @@ class BoardInfoActivity : AppCompatActivity() {
                     viewModel.removeBoardInfo(certificate_name,board_id)
 
                     val intent = Intent(this@BoardInfoActivity, BoardActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     intent.putExtra("certificate_name",certificate_name)
                     startActivity(intent)
 

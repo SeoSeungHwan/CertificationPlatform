@@ -1,18 +1,15 @@
 package com.router.certificationplatform.ui.board
 
-import android.content.ContentValues.TAG
 import android.content.Context
-import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.router.certificationplatform.R
 import com.router.certificationplatform.model.Board
+import kotlinx.android.synthetic.main.activity_board_info.*
+import java.text.SimpleDateFormat
 
 
 class BoardActivityRecyclerViewAdapter(private val dataSet: ArrayList<Board>) :
@@ -27,12 +24,12 @@ class BoardActivityRecyclerViewAdapter(private val dataSet: ArrayList<Board>) :
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val board_title_tv: TextView
-        val board_writer_tv: TextView
+        val board_list_time_tv: TextView
         val board_contents_tv: TextView
 
         init {
             board_title_tv = view.findViewById(R.id.board_title_tv)
-            board_writer_tv = view.findViewById(R.id.board_writer_tv)
+            board_list_time_tv = view.findViewById(R.id.board_list_time_tv)
             board_contents_tv = view.findViewById(R.id.board_contents_tv)
         }
 
@@ -50,7 +47,11 @@ class BoardActivityRecyclerViewAdapter(private val dataSet: ArrayList<Board>) :
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
         viewHolder.board_title_tv.text = dataSet.get(position).title
-        viewHolder.board_writer_tv.text =  "***"+dataSet.get(position).writer.substring(3)
+        val nowformat = SimpleDateFormat("yyyyMddhhmmss")
+        val newformat = SimpleDateFormat("M/dd   hh:mm")
+        val formatDate = nowformat.parse(dataSet.get(position).time)
+        val newformatDate = newformat.format(formatDate)
+        viewHolder.board_list_time_tv.text = newformatDate
         viewHolder.board_contents_tv.text = dataSet.get(position).contents
         if(itemClick != null){
             viewHolder?.itemView?.setOnClickListener {
