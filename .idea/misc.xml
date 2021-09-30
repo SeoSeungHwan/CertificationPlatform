@@ -6,6 +6,7 @@
         <entry key="..\:/Users/seunghwan/AndroidStudioProjects/CertificationPlatform/app/src/main/res/drawable-v24/custom_layout.xml" value="0.2171875" />
         <entry key="..\:/Users/seunghwan/AndroidStudioProjects/CertificationPlatform/app/src/main/res/drawable-v24/custom_textview.xml" value="0.39479166666666665" />
         <entry key="..\:/Users/seunghwan/AndroidStudioProjects/CertificationPlatform/app/src/main/res/drawable-v24/ic_baseline_add_24.xml" value="0.2171875" />
+        <entry key="..\:/Users/seunghwan/AndroidStudioProjects/CertificationPlatform/app/src/main/res/drawable/custom_button2.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/seunghwan/AndroidStudioProjects/CertificationPlatform/app/src/main/res/drawable/custom_recyclerview.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/seunghwan/AndroidStudioProjects/CertificationPlatform/app/src/main/res/drawable/custom_reply.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/seunghwan/AndroidStudioProjects/CertificationPlatform/app/src/main/res/drawable/custom_spinner.xml" value="0.38229166666666664" />
@@ -22,6 +23,9 @@
         <entry key="..\:/Users/seunghwan/AndroidStudioProjects/CertificationPlatform/app/src/main/res/layout/activity_sign_in.xml" value="0.22" />
         <entry key="..\:/Users/seunghwan/AndroidStudioProjects/CertificationPlatform/app/src/main/res/layout/board_list_item.xml" value="0.33" />
         <entry key="..\:/Users/seunghwan/AndroidStudioProjects/CertificationPlatform/app/src/main/res/layout/board_reply_item.xml" value="0.33" />
+        <entry key="..\:/Users/seunghwan/AndroidStudioProjects/CertificationPlatform/app/src/main/res/layout/fragment_board_info.xml" value="0.35144927536231885" />
+        <entry key="..\:/Users/seunghwan/AndroidStudioProjects/CertificationPlatform/app/src/main/res/layout/fragment_board_main.xml" value="0.35144927536231885" />
+        <entry key="..\:/Users/seunghwan/AndroidStudioProjects/CertificationPlatform/app/src/main/res/layout/fragment_board_write.xml" value="0.35144927536231885" />
         <entry key="..\:/Users/seunghwan/AndroidStudioProjects/CertificationPlatform/app/src/main/res/layout/star_list_item.xml" value="0.2046875" />
         <entry key="..\:/Users/seunghwan/AndroidStudioProjects/CertificationPlatform/app/src/main/res/menu/board_info_menu.xml" value="0.2171875" />
         <entry key="..\:/Users/seunghwan/AndroidStudioProjects/CertificationPlatform/app/src/main/res/menu/board_menu.xml" value="0.2046875" />
