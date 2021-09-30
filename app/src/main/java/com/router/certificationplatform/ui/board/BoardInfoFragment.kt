@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_board_info.*
 import kotlinx.android.synthetic.main.fragment_board_main.*
 import java.text.SimpleDateFormat
 
-class BoardInfoFragment : Fragment() {
+class BoardInfoFragment : Fragment(R.layout.fragment_board_info) {
 
     private val viewModel by activityViewModels<BoardMainViewModel>()
 
@@ -73,16 +73,9 @@ class BoardInfoFragment : Fragment() {
             board_info_time.text = newformatDate
             board_info_contents.text = it.contents
         })
+
+        add_reple_btn.setOnClickListener {
+            viewModel.addReple(args.boardId,reple_et.text.toString())
+        }
     }
-
-
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_board_info, container, false)
-    }
-
-
 }

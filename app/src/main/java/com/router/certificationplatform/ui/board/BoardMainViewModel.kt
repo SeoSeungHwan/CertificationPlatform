@@ -7,6 +7,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.router.certificationplatform.GlobalApplication
 import com.router.certificationplatform.model.Board
+import com.router.certificationplatform.model.Reple
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -83,6 +84,16 @@ class BoardMainViewModel : ViewModel(){
     //게시판 삭제
     fun removeBoardInfo(board_id: String){
         boardRef.child(certificate_name).child(board_id).removeValue()
+    }
+
+    //댓글 추가
+    fun addReple(board_id: String, contents: String){
+        val list = ArrayList<Reple>()
+        list.add(Reple(GlobalApplication.user.uid,contents))
+        list.add(Reple(GlobalApplication.user.uid,contents))
+        list.add(Reple(GlobalApplication.user.uid,contents))
+
+        boardRef.child(certificate_name).child(board_id).child("댓글").setValue(list)
     }
 
 }
