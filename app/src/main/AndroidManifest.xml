@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CertificationPlatform"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ui.board.BoardMainActivity"></activity>
         <activity
             android:name=".ui.board.BoardInfoActivity"
             android:exported="true" />

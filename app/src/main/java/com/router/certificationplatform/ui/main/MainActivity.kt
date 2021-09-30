@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.router.certificationplatform.ui.board.BoardActivity
+import com.router.certificationplatform.ui.board.BoardMainActivity
 import com.router.certificationplatform.GlobalApplication
 import com.router.certificationplatform.R
 import com.router.certificationplatform.ui.sign.SignInActivity
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         //게시판 입장 버튼 클릭 시
         enter_btn.setOnClickListener {
             if(certificate_list_spinner.selectedItem != null){
-                val intent = Intent(this@MainActivity, BoardActivity::class.java)
+                val intent = Intent(this@MainActivity, BoardMainActivity::class.java)
                 intent.putExtra("certificate_name",certificate_list_spinner.selectedItem.toString())
                 startActivity(intent)
             }else{
@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
             star_recyclerView.adapter = adapter
             adapter.itemClick = object : MainActivityStarRecyclerViewAdapter.ItemClick{
                 override fun onClick(view: View, position: Int) {
-                    val intent = Intent(this@MainActivity, BoardActivity::class.java)
+                    val intent = Intent(this@MainActivity, BoardMainActivity::class.java)
                     intent.putExtra("certificate_name",view.certificate_name_tv.text.toString())
                     startActivity(intent)
                 }

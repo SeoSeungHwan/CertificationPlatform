@@ -8,12 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.router.certificationplatform.R
 import com.router.certificationplatform.model.Board
-import kotlinx.android.synthetic.main.activity_board_info.*
 import java.text.SimpleDateFormat
 
 
-class BoardActivityRecyclerViewAdapter(private val dataSet: ArrayList<Board>) :
-    RecyclerView.Adapter<BoardActivityRecyclerViewAdapter.ViewHolder>() {
+class BoardMainRecyclerViewAdapter(private val dataSet: ArrayList<Board>) :
+    RecyclerView.Adapter<BoardMainRecyclerViewAdapter.ViewHolder>() {
 
     lateinit var context : Context
 

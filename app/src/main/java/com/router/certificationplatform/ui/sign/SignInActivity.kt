@@ -28,6 +28,9 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
 
+        //로고 표현하기
+        sign_title_tv.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+        
         // Configure Google Sign In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
@@ -35,10 +38,10 @@ class SignInActivity : AppCompatActivity() {
             .build()
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
-
         auth = Firebase.auth
-        google_signin_btn.setOnClickListener {
 
+        //구글로그인 버튼 클릭 시
+        google_signin_btn.setOnClickListener {
             signIn()
         }
 
@@ -65,9 +68,6 @@ class SignInActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-
-        sign_title_tv.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
 
         //todo : user가 이미 있다면 ui변경하기
         val currentUser = auth.currentUser
@@ -96,7 +96,6 @@ class SignInActivity : AppCompatActivity() {
                     val intent = Intent(this, MainActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
-
 
                 } else {
                     // If sign in fails, display a message to the user.
