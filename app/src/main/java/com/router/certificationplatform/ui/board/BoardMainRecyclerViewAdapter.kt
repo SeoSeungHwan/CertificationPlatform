@@ -46,7 +46,7 @@ class BoardMainRecyclerViewAdapter(private val dataSet: ArrayList<Board>) :
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
         viewHolder.board_title_tv.text = dataSet.get(position).title
-        val nowformat = SimpleDateFormat("yyyyMddhhmmss")
+        val nowformat = SimpleDateFormat("yyyyMMddhhmmss")
         val newformat = SimpleDateFormat("M/dd   hh:mm")
         val formatDate = nowformat.parse(dataSet.get(position).time)
         val newformatDate = newformat.format(formatDate)

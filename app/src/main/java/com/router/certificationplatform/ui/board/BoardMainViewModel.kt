@@ -26,9 +26,11 @@ class BoardMainViewModel : ViewModel(){
         }.addOnFailureListener {
         }
     }
+    //즐겨찾기 추가
     fun addStar(){
         starRef.child(GlobalApplication.user.uid).child(certificate_name).setValue("true")
     }
+    //즐겨찾기 삭제
     fun removeStar(){
         starRef.child(GlobalApplication.user.uid).child(certificate_name).removeValue()
     }
@@ -65,6 +67,22 @@ class BoardMainViewModel : ViewModel(){
         //var email = "***"+GlobalApplication.user.email.toString().substring(3)
         val board = Board(contents_id,title,contents,currentDate,email)
         boardRef.child(certificate_name).child(contents_id).setValue(board)
+    }
+
+    //게시판 정보 가져오기
+    val boardLiveData = MutableLiveData<Board>()
+    fun fetchBoardInfo(board_id : String) {
+
+        boardRef.child(certificate_name).child(board_id).get().addOnSuccessListener {
+            boardLiveData.value = it.getValue(Board::class.java)
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
+    }
+
+    //게시판 삭제
+    fun removeBoardInfo(board_id: String){
+        boardRef.child(certificate_name).child(board_id).removeValue()
     }
 
 }

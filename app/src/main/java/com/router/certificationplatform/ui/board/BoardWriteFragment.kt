@@ -1,7 +1,6 @@
 package com.router.certificationplatform.ui.board
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,10 +9,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.router.certificationplatform.R
-import com.router.certificationplatform.ui.main.MainActivity
-import kotlinx.android.synthetic.main.activity_board_write.*
-import kotlinx.android.synthetic.main.activity_board_write.board_write_toolbar
-import kotlinx.android.synthetic.main.fragment_board_main.*
 import kotlinx.android.synthetic.main.fragment_board_write.*
 
 

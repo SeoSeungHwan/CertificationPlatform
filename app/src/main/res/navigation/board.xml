@@ -16,6 +16,11 @@
             app:destination="@id/boardWriteFragment"
             app:popExitAnim="@anim/exit_to_right"
             app:enterAnim="@anim/enter_from_right" />
+        <action
+            android:id="@+id/action_boardFragment_to_boardInfoFragment"
+            app:destination="@id/boardInfoFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:popExitAnim="@anim/exit_to_right" />
     </fragment>
     <fragment
         android:id="@+id/boardWriteFragment"
@@ -25,5 +30,17 @@
         <action
             android:id="@+id/action_boardWriteFragment_to_boardFragment"
             app:destination="@id/boardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/boardInfoFragment"
+        android:name="com.router.certificationplatform.ui.board.BoardInfoFragment"
+        android:label="fragment_board_info"
+        tools:layout="@layout/fragment_board_info" >
+        <action
+            android:id="@+id/action_boardInfoFragment_to_boardFragment"
+            app:destination="@id/boardFragment" />
+        <argument
+            android:name="board_id"
+            app:argType="string" />
     </fragment>
 </navigation>

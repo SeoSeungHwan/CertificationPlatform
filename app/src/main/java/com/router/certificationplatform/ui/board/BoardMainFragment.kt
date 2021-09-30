@@ -67,6 +67,8 @@ class BoardMainFragment : Fragment() {
             adapter.itemClick = object : BoardMainRecyclerViewAdapter.ItemClick{
                 override fun onClick(view: View, position: Int,board_id:String) {
                 //todo 게시글 상세 정보로 이동
+                    //게시글 id : it.get(position).id
+                    findNavController().navigate(BoardMainFragmentDirections.actionBoardFragmentToBoardInfoFragment(it.get(position).id))
                 }
             }
         })
