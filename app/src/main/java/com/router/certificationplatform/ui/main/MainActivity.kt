@@ -86,6 +86,10 @@ class MainActivity : AppCompatActivity() {
         )
         viewModel.fetchStarList()
         viewModel.starListLiveData.observe(this,{
+            //즐겨찾기 개수 
+            star_count_tv.text = it.size.toString()
+            
+            //즐겨찾기 목록 구현
             val adapter = MainActivityStarRecyclerViewAdapter(it)
             star_recyclerView.layoutManager = linearLayoutMangerWrapper
             star_recyclerView.adapter = adapter

@@ -73,7 +73,6 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/star_recyclerView"
-        app:layout_constraintEnd_toEndOf="@+id/star_recyclerView"
         app:layout_constraintStart_toStartOf="@+id/star_recyclerView" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -105,6 +104,18 @@
         app:layout_constraintEnd_toEndOf="@+id/star_recyclerView"
         app:layout_constraintStart_toStartOf="@+id/star_recyclerView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/star_count_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="즐겨찾기 개수"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
