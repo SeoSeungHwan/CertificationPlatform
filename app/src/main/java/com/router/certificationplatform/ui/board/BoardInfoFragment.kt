@@ -76,8 +76,22 @@ class BoardInfoFragment : Fragment(R.layout.fragment_board_info) {
         })
 
         add_comment_btn.setOnClickListener {
-            viewModel.addComment(args.boardId,comment_et.text.toString())
-            comment_et.text = null
+            var builder = AlertDialog.Builder(context)
+            builder.setTitle("댓글 등록")
+            builder.setMessage("댓글을 등록 하시겠습니까?")
+            builder.setIcon(R.drawable.ic_baseline_add_comment_24)
+            //"예"라면 게시물 삭제하기
+            builder.setPositiveButton("예") { dialogInterface, i ->
+                viewModel.addComment(args.boardId,comment_et.text.toString())
+                comment_et.text = null
+
+                val inputMethodManager: InputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+            }
+            builder.setNegativeButton("아니오") { dialogInterface, i ->
+
+            }
+            builder.show()
         }
 
         //댓글 목록 가져오기
@@ -88,13 +102,13 @@ class BoardInfoFragment : Fragment(R.layout.fragment_board_info) {
 
         viewModel.fetchComment(args.boardId)
         viewModel.commentListLivedata.observe(viewLifecycleOwner,{
+            comment_count_tv.text = it.size.toString()
             val adapter = CommentRecyclerViewAdapter(it)
             comment_rv.layoutManager = linearLayoutMangerWrapper
             comment_rv.adapter = adapter
             //comment_rv.isNestedScrollingEnabled = false
             //todo 댓글이 많아지면 스크롤이 아니라 확장하게..
-            val inputMethodManager: InputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+
 
         })
     }

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.router.certificationplatform.R
 import com.router.certificationplatform.model.Board
 import com.router.certificationplatform.model.Comment
+import kotlinx.android.synthetic.main.fragment_board_info.*
 import java.text.SimpleDateFormat
 
 
@@ -46,7 +47,7 @@ class CommentRecyclerViewAdapter(private val dataSet: ArrayList<Comment>) :
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
-        viewHolder.comment_writer_tv.text = dataSet.get(position).nickname
+        viewHolder.comment_writer_tv.text ="***"+ dataSet.get(position).nickname.substring(3)
         val nowformat = SimpleDateFormat("yyyyMMddhhmmss")
         val newformat = SimpleDateFormat("M/dd   hh:mm")
         val formatDate = nowformat.parse(dataSet.get(position).time)

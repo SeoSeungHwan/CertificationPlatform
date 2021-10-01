@@ -1,12 +1,15 @@
 package com.router.certificationplatform.ui.main
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -54,7 +57,16 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this,"자격증 종목을 입력해주세요.",Toast.LENGTH_SHORT).show()
             }
         }
+        
+        certificate_list_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                Log.d(TAG, "onItemSelected: ${view} + ${position}")
+            }
 
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
+        }
     }
 
     override fun onStart() {
