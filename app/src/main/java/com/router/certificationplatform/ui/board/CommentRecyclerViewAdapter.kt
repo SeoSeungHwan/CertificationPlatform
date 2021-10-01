@@ -8,35 +8,36 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.router.certificationplatform.R
 import com.router.certificationplatform.model.Board
+import com.router.certificationplatform.model.Comment
 import java.text.SimpleDateFormat
 
 
-class BoardMainRecyclerViewAdapter(private val dataSet: ArrayList<Board>) :
-    RecyclerView.Adapter<BoardMainRecyclerViewAdapter.ViewHolder>() {
+class CommentRecyclerViewAdapter(private val dataSet: ArrayList<Comment>) :
+    RecyclerView.Adapter<CommentRecyclerViewAdapter.ViewHolder>() {
 
     lateinit var context : Context
 
     interface ItemClick{
-        fun onClick(view : View ,position: Int,board_id : String)
+        fun onClick(view : View ,position: Int,comment_id : String)
     }
     var itemClick : ItemClick? = null
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val board_title_tv: TextView
-        val board_list_time_tv: TextView
-        val board_contents_tv: TextView
+        val comment_writer_tv: TextView
+        val comment_contents_tv: TextView
+        val comment_time_tv: TextView
 
         init {
-            board_title_tv = view.findViewById(R.id.board_title_tv)
-            board_list_time_tv = view.findViewById(R.id.comment_writer_tv)
-            board_contents_tv = view.findViewById(R.id.comment_contents_tv)
+            comment_writer_tv = view.findViewById(R.id.comment_writer_tv)
+            comment_contents_tv = view.findViewById(R.id.comment_contents_tv)
+            comment_time_tv = view.findViewById(R.id.comment_time_tv)
         }
 
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.board_list_item, viewGroup, false)
+            .inflate(R.layout.board_comment_item, viewGroup, false)
 
         context = view.context
         return ViewHolder(view)
@@ -45,16 +46,16 @@ class BoardMainRecyclerViewAdapter(private val dataSet: ArrayList<Board>) :
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
-        viewHolder.board_title_tv.text = dataSet.get(position).title
+        viewHolder.comment_writer_tv.text = dataSet.get(position).nickname
         val nowformat = SimpleDateFormat("yyyyMMddhhmmss")
         val newformat = SimpleDateFormat("M/dd   hh:mm")
         val formatDate = nowformat.parse(dataSet.get(position).time)
         val newformatDate = newformat.format(formatDate)
-        viewHolder.board_list_time_tv.text = newformatDate
-        viewHolder.board_contents_tv.text = dataSet.get(position).contents
+        viewHolder.comment_time_tv.text = newformatDate
+        viewHolder.comment_contents_tv.text = dataSet.get(position).contents
         if(itemClick != null){
             viewHolder?.itemView?.setOnClickListener {
-                itemClick?.onClick(it,position,dataSet.get(position).id)
+                itemClick?.onClick(it,position,dataSet.get(position).commentId)
             }
         }
     }

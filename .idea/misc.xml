@@ -31,14 +31,22 @@
         <entry key="..\:/Users/seunghwan/AndroidStudioProjects/CertificationPlatform/app/src/main/res/menu/board_info_menu.xml" value="0.2171875" />
         <entry key="..\:/Users/seunghwan/AndroidStudioProjects/CertificationPlatform/app/src/main/res/menu/board_menu.xml" value="0.2046875" />
         <entry key="..\:/Users/seunghwan/AndroidStudioProjects/CertificationPlatform/app/src/main/res/menu/board_write_menu.xml" value="0.2046875" />
+        <entry key="..\:/Users/tmdgh/AndroidStudioProjects/CertificationPlatform/app/src/main/res/drawable-v24/custom_layout.xml" value="0.3764102564102564" />
         <entry key="..\:/Users/tmdgh/AndroidStudioProjects/CertificationPlatform/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/tmdgh/AndroidStudioProjects/CertificationPlatform/app/src/main/res/drawable/custom_button2.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/tmdgh/AndroidStudioProjects/CertificationPlatform/app/src/main/res/drawable/custom_comment.xml" value="0.3764102564102564" />
         <entry key="..\:/Users/tmdgh/AndroidStudioProjects/CertificationPlatform/app/src/main/res/drawable/custom_recyclerview.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/tmdgh/AndroidStudioProjects/CertificationPlatform/app/src/main/res/drawable/custom_spinner.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/tmdgh/AndroidStudioProjects/CertificationPlatform/app/src/main/res/drawable/ic_logout.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/tmdgh/AndroidStudioProjects/CertificationPlatform/app/src/main/res/font/font.xml" value="0.23489583333333333" />
+        <entry key="..\:/Users/tmdgh/AndroidStudioProjects/CertificationPlatform/app/src/main/res/layout/activity_board_main.xml" value="0.2046875" />
         <entry key="..\:/Users/tmdgh/AndroidStudioProjects/CertificationPlatform/app/src/main/res/layout/activity_main.xml" value="0.2046875" />
         <entry key="..\:/Users/tmdgh/AndroidStudioProjects/CertificationPlatform/app/src/main/res/layout/activity_sign_in.xml" value="0.2046875" />
+        <entry key="..\:/Users/tmdgh/AndroidStudioProjects/CertificationPlatform/app/src/main/res/layout/board_comment_item.xml" value="0.33" />
+        <entry key="..\:/Users/tmdgh/AndroidStudioProjects/CertificationPlatform/app/src/main/res/layout/board_list_item.xml" value="0.2046875" />
+        <entry key="..\:/Users/tmdgh/AndroidStudioProjects/CertificationPlatform/app/src/main/res/layout/board_reply_item.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/tmdgh/AndroidStudioProjects/CertificationPlatform/app/src/main/res/layout/fragment_board_info.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/tmdgh/AndroidStudioProjects/CertificationPlatform/app/src/main/res/layout/star_list_item.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/tmdgh/AndroidStudioProjects/CertificationPlatform/app/src/main/res/menu/board_menu.xml" value="0.2046875" />
         <entry key="..\:/Users/tmdgh/AndroidStudioProjects/CertificationPlatform/app/src/main/res/menu/board_write_menu.xml" value="0.2046875" />
         <entry key="..\:/Users/tmdgh/AndroidStudioProjects/CertificationPlatform/app/src/main/res/menu/main_menu.xml" value="0.2046875" />

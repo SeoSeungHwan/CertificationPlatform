@@ -7,7 +7,8 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.router.certificationplatform.GlobalApplication
 import com.router.certificationplatform.model.Board
-import com.router.certificationplatform.model.Reple
+import com.router.certificationplatform.model.Comment
+import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -61,13 +62,12 @@ class BoardMainViewModel : ViewModel(){
         //게시물 고유 번호 생성 (uid + 현재시간)
         val format = SimpleDateFormat("yyyyMddhhmmss")
         val currentDate = format.format(Date())
-        val contents_id = GlobalApplication.user.uid + currentDate
-
+        val board_id = boardRef.push().key.toString()
         //게시물 추가
         var email = GlobalApplication.user.email.toString()
         //var email = "***"+GlobalApplication.user.email.toString().substring(3)
-        val board = Board(contents_id,title,contents,currentDate,email)
-        boardRef.child(certificate_name).child(contents_id).setValue(board)
+        val board = Board(board_id,title,contents,currentDate,email)
+        boardRef.child(certificate_name).child(board_id).setValue(board)
     }
 
     //게시판 정보 가져오기
@@ -87,13 +87,35 @@ class BoardMainViewModel : ViewModel(){
     }
 
     //댓글 추가
-    fun addReple(board_id: String, contents: String){
-        val list = ArrayList<Reple>()
-        list.add(Reple(GlobalApplication.user.uid,contents))
-        list.add(Reple(GlobalApplication.user.uid,contents))
-        list.add(Reple(GlobalApplication.user.uid,contents))
+    fun addComment(board_id: String, contents: String){
 
-        boardRef.child(certificate_name).child(board_id).child("댓글").setValue(list)
+        val commentId = boardRef.push().key.toString()
+
+        //게시물 고유 번호 생성 (uid + 현재시간)
+        val format = SimpleDateFormat("yyyyMddhhmmss")
+        val currentDate = format.format(Date())
+        val comment = Comment(commentId,GlobalApplication.user.uid,GlobalApplication.user.email.toString(),contents,currentDate)
+
+        boardRef.child(certificate_name).child(board_id).child("Comments").child(boardRef.push().key.toString()).setValue(comment)
+        fetchComment(board_id)
+    }
+    
+    //댓글 불러오기
+    val commentList = ArrayList<Comment>()
+    val commentListLivedata = MutableLiveData<ArrayList<Comment>>()
+    fun fetchComment(board_id: String){
+        commentList.clear()
+        boardRef.child(certificate_name).child(board_id).child("Comments").get().addOnSuccessListener {
+            it.children.forEach {
+                val comment = it.getValue(Comment::class.java)
+                if (comment != null) {
+                    commentList.add(comment)
+                }
+            }
+            commentListLivedata.value = commentList
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
     }
 
 }

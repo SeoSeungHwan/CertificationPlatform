@@ -101,11 +101,34 @@
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
+                <TextView
+                    android:id="@+id/comment_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="댓글"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/test_linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"></LinearLayout>
+
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/comment_rv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="50dp"
-                    tools:listitem="@layout/board_reply_item" />
+                    tools:listitem="@layout/board_comment_item" >
+
+                </androidx.recyclerview.widget.RecyclerView>
             </LinearLayout>
         </ScrollView>
 
@@ -122,9 +145,10 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <EditText
-                android:id="@+id/reple_et"
+                android:id="@+id/comment_et"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
                 android:layout_marginEnd="3dp"
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/font"
@@ -134,12 +158,12 @@
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/add_reple_btn"
+                app:layout_constraintEnd_toStartOf="@+id/add_comment_btn"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/add_reple_btn"
+                android:id="@+id/add_comment_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="10dp"
@@ -152,7 +176,6 @@
                 tools:ignore="SpeakableTextPresentCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
 </FrameLayout>
